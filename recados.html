@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recados</title>
+  </head>
+  <body>
+    <main>
+        <div id="userLogged"></div>
+      <form id="addMessage">
+        <fieldset>
+          <legend>Adicionar recados</legend>
+          <label for="mailUser">Email</label>
+          <input type="email" name="mailUser" id="mailUser" />
+          <br />
+
+          <label for="title">Titulo</label>
+          <input type="text" name="title" id="title" />
+          <br />
+
+          <label for="message">Message</label>
+          <input type="text" name="message" id="message" />
+          <br />
+
+          <button type="submit" onclick="addMsg(event)">Adicionar</button>
+        </fieldset>
+      </form>
+      <br />
+
+      <form id="attMessage">
+        <fieldset>
+          <legend>Atualizar recado</legend>
+          <label for="id">ID</label>
+          <input type="number" name="id" id="id" />
+          <br />
+
+          <label for="newTitle">Novo titulo</label>
+          <input type="text" name="newTitle" id="newTitle" />
+          <br />
+
+          <label for="newMessage">Novo recado</label>
+          <input type="text" name="newMessage" id="newMessage" />
+          <br />
+          <button type="submit" onclick="attMsg(event)">Confirmar</button>
+        </fieldset>
+      </form>
+      <br />
+
+      <form id="remMessage">
+        <fieldset>
+          <legend>Remover recado</legend>
+          <label for="idRem">ID</label>
+          <input type="number" name="idRem" id="idRem" />
+          <br />
+
+          <button type="submit" onclick="remMsg(event)">Confirmar</button>
+        </fieldset>
+      </form>
+      <br />
+
+      <button type="submit" onclick="showMsg(event)">Mostrar recados</button>
+
+      <div id="resMessage"></div>
+      <div id="resAttMessage"></div>
+      <div id="resDelMessage"></div>
+      <div id="resAddMessage"></div>
+    </main>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="./script.js"></script>
+    <script src="./api.js"></script>
+  </body>
+</html>
