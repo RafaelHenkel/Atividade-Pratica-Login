@@ -55,8 +55,9 @@ const login = async (event) => {
     const resLogin = document.getElementById("loginUser");
     resLogin.textContent = `a requisição fui bem sucedida ${response.data.message}`;
 
-    localStorage.removeItem("loginUser");
-    localStorage.setItem("userMail", JSON.stringify(mail));
+    localStorage.removeItem("sendLogin");
+    localStorage.setItem("userMail", mail);
+    window.location.href = "./recados.html";
   } catch (error) {
     console.log(`Ocorreu um erro durante a requisição ${error.message}`);
   }
@@ -72,7 +73,7 @@ const showUsers = async (event) => {
     msg.forEach((message) => {
       const msgElement = document.createElement("div");
       msgElement.innerHTML = `<p> ID: ${message.id}</p><p> Name: ${message.name}</p><p> Email: ${message.mail}</p><p> Senha: ${message.pass}</p>`;
-      
+
       msgUsers.appendChild(msgElement);
     });
   } catch (error) {
@@ -86,7 +87,7 @@ const addMsg = async (event) => {
   event.preventDefault();
 
   try {
-    const mail = document.getElementById("mailUser").value;
+    const mail = localStorage.getItem("userMail");
     const title = document.getElementById("title").value;
     const message = document.getElementById("message").value;
 
@@ -105,7 +106,7 @@ const addMsg = async (event) => {
     console.log(`a requisição fui bem sucedida ${response.data}`);
 
     const resMessage = document.getElementById("resMessage");
-    resMessage.textContent = `a requisição fui bem sucedida ${response.data.message}`;
+    resMessage.textContent = `a requisição fui bem sucedida ${response.data.data}`;
     localStorage.removeItem("sendMessage");
   } catch (error) {
     console.log(`Ocorreu um erro durante a requisição ${error.message}`);
@@ -186,6 +187,25 @@ const showMsg = async (event) => {
 
       addMessage.appendChild(msgElement);
     });
+  } catch (error) {
+    console.log(`Ocorreu um erro durante a requisição ${error.message}`);
+  }
+};
+
+////////////////////////////////////////VERIFICAR LOGIN/////////////////////////////////////////
+
+const verifyLogin = (event) => {
+  event.preventDefault();
+
+  try {
+    const mail = localStorage.getItem("userMail");
+    const addMessage = document.getElementById("userLogged");
+    if (mail) {
+      addMessage.textContent = `Você esta logado no email ${mail}`;
+    } else {
+      addMessage.textContent = "Você não esta logado";
+      window.location.href = "./index.html";
+    }
   } catch (error) {
     console.log(`Ocorreu um erro durante a requisição ${error.message}`);
   }

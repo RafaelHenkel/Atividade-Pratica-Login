@@ -5,15 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Recados</title>
   </head>
-  <body>
+  <body onload="verifyLogin(event)">
     <main>
-        <div id="userLogged"></div>
+      <div id="userLogged"></div>
+      <br />
       <form id="addMessage">
         <fieldset>
           <legend>Adicionar recados</legend>
-          <label for="mailUser">Email</label>
-          <input type="email" name="mailUser" id="mailUser" />
-          <br />
 
           <label for="title">Titulo</label>
           <input type="text" name="title" id="title" />
